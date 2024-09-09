@@ -1,6 +1,6 @@
 Name:		texlive-garamond-libre
-Version:	64412
-Release:	2
+Version:	71058
+Release:	1
 Summary:	The Garamond Libre font face
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/garamond-libre

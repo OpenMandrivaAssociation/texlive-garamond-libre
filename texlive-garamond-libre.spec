@@ -3,7 +3,7 @@ Version:	71058
 Release:	1
 Summary:	The Garamond Libre font face
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/garamond-libre
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/garamond-libre
 License:	mit lppl
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/garamond-libre.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/garamond-libre.doc.r%{version}.tar.xz

@@ -1,51 +1,31 @@
-Name:		texlive-garamond-libre
-Version:	71058
-Release:	1
+%global tl_name garamond-libre
+%global tl_revision 77682
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.4
+Release:	%{tl_revision}.1
 Summary:	The Garamond Libre font face
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/garamond-libre
+URL:		https://www.ctan.org/tex-archive/fonts/garamond-libre
 License:	mit lppl
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/garamond-libre.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/garamond-libre.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/garamond-libre.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/garamond-libre.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-Garamond Libre is a free and open-source old-style font family.
-It is a "true Garamond," i.e., it is based off the designs of
-16th-century French engraver Claude Garamond (also spelled
-Garamont). The Roman design is Garamond's; the italics are from
-a design by Robert Granjon. The upright Greek font is after a
-design by Firmin Didot; the "italic" Greek font is after a
-design by Alexander Wilson. The font family includes support
-for Latin, Greek (monotonic and polytonic) and Cyrillic
-scripts, as well as small capitals, old-style figures, superior
-and inferior figures, historical ligatures, Byzantine musical
-symbols, the IPA and swash capitals.
+Garamond Libre is a free and open-source old-style font family. It is a
+"true Garamond," i.e., it is based off the designs of 16th-century
+French engraver Claude Garamond (also spelled Garamont). The Roman
+design is Garamond's; the italics are from a design by Robert Granjon.
+The upright Greek font is after a design by Firmin Didot; the "italic"
+Greek font is after a design by Alexander Wilson. The font family
+includes support for Latin, Greek (monotonic and polytonic) and Cyrillic
+scripts, as well as small capitals, old-style figures, superior and
+inferior figures, historical ligatures, Byzantine musical symbols, the
+IPA and swash capitals.
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/tex/latex/garamond-libre
-%{_texmfdistdir}/fonts/vf/public/garamond-libre
-%{_texmfdistdir}/fonts/type1/public/garamond-libre
-%{_texmfdistdir}/fonts/tfm/public/garamond-libre
-%{_texmfdistdir}/fonts/opentype/public/garamond-libre
-%{_texmfdistdir}/fonts/map/dvips/garamond-libre
-%{_texmfdistdir}/fonts/enc/dvips/garamond-libre
-%doc %{_texmfdistdir}/doc/fonts/garamond-libre
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post

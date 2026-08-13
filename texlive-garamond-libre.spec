@@ -1,9 +1,10 @@
 %global tl_name garamond-libre
 %global tl_revision 77682
+%global tl_version 1.4
 
 Name:		texlive-%{tl_name}
 Epoch:		1
-Version:	1.4
+Version:	%{tl_version}
 Release:	%{tl_revision}.1
 Summary:	The Garamond Libre font face
 Group:		Publishing
@@ -13,7 +14,8 @@ Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/garamond-libre.r
 Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/garamond-libre.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 Garamond Libre is a free and open-source old-style font family. It is a
@@ -27,3 +29,10 @@ scripts, as well as small capitals, old-style figures, superior and
 inferior figures, historical ligatures, Byzantine musical symbols, the
 IPA and swash capitals.
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_updmap_d}
+cat > %{buildroot}%{_texmf_updmap_d}/%{tl_name} <<'TL_DROPIN_EOF'
+# from garamond-libre:
+Map GaramondLibre.map
+TL_DROPIN_EOF
